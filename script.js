@@ -7,7 +7,7 @@ let line_3 = document.querySelector(".line_3");
 let line_4 = document.querySelector(".line_4");
 let word_1 = document.querySelector(".word_1");
 let word_2 = document.querySelector(".word_2");
-
+let Text = document.getElementsByClassName('headtext');
 const setSmoothscroll = () => {
   // init loco
   const locoScroll = new LocomotiveScroll({
@@ -73,20 +73,28 @@ const setHelpSectionAnim = () => {
 
 setSmoothscroll();
 setHelpSectionAnim();
+
+Array.from(Text).forEach(element => {
+  const el = element.children[0];
+  
 gsap.to(
-  ".headtext div",
+  el,
 
   {
     scale: 0,
-    duration: 0.7,
+    duration: 1.4,
     scrollTrigger: {
-      trigger: ".headtext",
+      trigger: element,
       scroller: "main",
 
-      toggleActions: "play reverse play reset",
+      toggleActions: "play none none reset",
     },
   }
 );
+  
+})
+
+
 gsap.to(I_img, {
   scale: 22,
   x: 250,

@@ -22,16 +22,27 @@ body {
   margin: 0;
   padding: 0;
 }
+.Font1{
+  font-family: 'Font1';
+}
+.Font2{
+  font-family: 'Font2';
+}
+.Font3{
+  font-family: 'Font3';
+  font-size: max(4vw,40px);
+}
 :root {
   --color-primary: #d7ff00;
 }
 .headtext {
-  font-family: "Font1";
+
   width: fit-content;
   height: fit-content;
   overflow: hidden;
   white-space: nowrap;
   position: relative;
+
   margin: auto;
   > div {
     position: absolute;
@@ -40,7 +51,7 @@ body {
     border-radius: 100%;
     transform-origin: center;
     width: 100%;
-    scale: 3;
+    scale: 10;
     height: 100%;
 
     background-color: white;
@@ -53,6 +64,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#page3{
+  display: flex;
+
+  flex-wrap: wrap;
+
+  width: 100vw;
+  
+  >div{
+
+    width: 50vw;
+  }
+ 
+  >div img{
+    width: 100%;
+   
+    max-height: 100vh;
+  }
 }
 .I_div {
   display: flex;
@@ -146,12 +175,24 @@ body {
   .help-detail {
     grid-column: 4/6;
   }
+  #page3{
+     gap: 20px;
+
+    >div{
+      width: 100vw;
+      
+    }
+    &:first-child{
+      height: 50vh;
+    }
+  }
 }
 
 #page5 {
   width: 100vw;
   height: 100vh;
-  background: center url(./public/page4_bg.webp);
+  background: center url(./public/page4_bg.webp) ;
+  background-attachment: fixed;
   position: relative;
   display: grid;
   place-items: center;
