@@ -14,10 +14,10 @@ gsap.to('.headtext div',
   
     {
      scale:0,
-         duration:3.0,
+         duration:1.5,
          scrollTrigger: {
       trigger: ".headtext",
-      markers: true,
+      
       toggleActions: "play none none reset",
     }
     }
@@ -26,8 +26,8 @@ const setHelpSectionAnim = () => {
   const helptimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".help-instance",
-      markers: true,
-      toggleActions: "play none none reset",
+      start:"top 100px",
+      toggleActions: "play none none reverse",
     },
   });
   helptimeline.to(
@@ -58,7 +58,7 @@ gsap.to(I_img, {
         trigger: ".I_div",
         scroller: "body",
         start: "top 10%",
-        end: "top -70%",
+        end: "top -20%",
         scrub: true,
         pin: true,
     }
@@ -70,9 +70,9 @@ gsap.to([line_2, line_3, line_4], {
     scrollTrigger: {
         trigger: line_2,
         scroller: "body",
-        start: "top 0%",
+        start: "top 30%",
+        markers:true,
         end: "top -10%",
-        markers: true,
         toggleActions: "play none none reset",
     }
 });
@@ -85,7 +85,6 @@ gsap.to(word_1, {
         scroller: "body",
         start: "top 18%",
         end: "top 10%",
-        markers: true,
         toggleActions: "play none none reset", // when not give scrub then use this 
     }
 });
@@ -97,7 +96,6 @@ gsap.to(word_2, {
         scroller: "body",
         start: "top 18%",
         end: "top 10%",
-        markers: true,
         toggleActions: "play none none reset", // when not give scrub then use this 
     }
 });
