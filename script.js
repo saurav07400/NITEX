@@ -8,25 +8,47 @@ let line_4 = document.querySelector(".line_4");
 let word_1 = document.querySelector(".word_1");
 let word_2 = document.querySelector(".word_2");
 
+const setSmoothscroll = () => {
+  // init loco
+  const locoScroll = new LocomotiveScroll({
+    el: document.querySelector("main"), // your scroll container
+    smooth: true,
+    multiplier: 1.2, // adjust speed
+  });
 
+  // tell ScrollTrigger to use proxy
+  ScrollTrigger.scrollerProxy("main", {
+    scrollTop(value) {
+      return arguments.length
+        ? locoScroll.scrollTo(value, 0, 0)
+        : locoScroll.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
+    pinType: document.querySelector("main").style.transform
+      ? "transform"
+      : "fixed",
+  });
 
-gsap.to('.headtext div',
-  
-    {
-     scale:0,
-         duration:1.5,
-         scrollTrigger: {
-      trigger: ".headtext",
-      
-      toggleActions: "play none none reset",
-    }
-    }
-)
+  // update ScrollTrigger on loco update
+  locoScroll.on("scroll", ScrollTrigger.update);
+
+  // refresh both when window resizes
+  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+  ScrollTrigger.refresh();
+};
 const setHelpSectionAnim = () => {
   const helptimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".help-instance",
-      start:"top 100px",
+      scroller: "main",
+      start: "top 240px",
       toggleActions: "play none none reverse",
     },
   });
@@ -39,63 +61,77 @@ const setHelpSectionAnim = () => {
     },
     0
   );
-  helptimeline.to('.help-top',{
-    transform: "scaleX(100%)",
-    stagger:0.2
-  },0.2)
+  helptimeline.to(
+    ".help-top",
+    {
+      transform: "scaleX(100%)",
+      stagger: 0.2,
+    },
+    0.2
+  );
 };
 
+setSmoothscroll();
 setHelpSectionAnim();
+gsap.to(
+  ".headtext div",
 
-gsap.to(I_img, {
-    scale: 22,
-    x: 250,
-    height: 30,
-    width: 70,
-    transform: "skewX(0deg)",
-    y: -100,
+  {
+    scale: 0,
+    duration: 0.7,
     scrollTrigger: {
-        trigger: ".I_div",
-        scroller: "body",
-        start: "top 10%",
-        end: "top -20%",
-        scrub: true,
-        pin: true,
-    }
+      trigger: ".headtext",
+      scroller: "main",
+
+      toggleActions: "play reverse play reset",
+    },
+  }
+);
+gsap.to(I_img, {
+  scale: 22,
+  x: 250,
+  height: 30,
+  width: 70,
+  transform: "skewX(0deg)",
+  y: -100,
+  scrollTrigger: {
+    trigger: ".I_div",
+    scroller: "main",
+    start: "top 10%",
+    end: "top -20%",
+    scrub: true,
+    pin: true,
+  },
 });
 
 gsap.to([line_2, line_3, line_4], {
-    color: "white",
-    easing : "none",
-    scrollTrigger: {
-        trigger: line_2,
-        scroller: "body",
-        start: "top 30%",
-        markers:true,
-        end: "top -10%",
-        toggleActions: "play none none reset",
-    }
+  color: "white",
+  scrollTrigger: {
+    trigger: line_2,
+    scroller: "main",
+    start: "top 30%",
+    end: "top -10%",
+    toggleActions: "play none none reset",
+  },
 });
 
 gsap.to(word_1, {
-    x : 60,
-    easing : "none",
-    scrollTrigger: {
-        trigger: line_2,
-        scroller: "body",
-        start: "top 18%",
-        end: "top 10%",
-        toggleActions: "play none none reset", // when not give scrub then use this 
-    }
+  x: 60,
+  scrollTrigger: {
+    trigger: line_2,
+    scroller: "main",
+    start: "top 18%",
+    end: "top 10%",
+    toggleActions: "play none none reset", // when not give scrub then use this
+  },
 });
 gsap.to(word_2, {
-    x : -60,
-    easing : "none",
-    scrollTrigger: {
-        trigger: line_2,
-        scroller: "body",
-        start: "top 18%",
-        end: "top 10%",
-        toggleActions: "play none none reset", // when not give scrub then use this 
-    }
+  x: -60,
+  scrollTrigger: {
+    trigger: line_2,
+    scroller: "main",
+    start: "top 18%",
+    end: "top 10%",
+    toggleActions: "play none none reset", // when not give scrub then use this
+  },
 });

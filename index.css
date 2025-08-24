@@ -10,7 +10,9 @@
   font-family: "Font3";
   src: url("./public/font3.woff2") format("woff2");
 }
-
+body,html{
+  scroll-behavior: smooth;
+}
 body {
   width: 100vw;
   overflow-x: hidden;
