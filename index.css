@@ -22,21 +22,20 @@ body {
   margin: 0;
   padding: 0;
 }
-.Font1{
-  font-family: 'Font1';
+.Font1 {
+  font-family: "Font1";
 }
-.Font2{
-  font-family: 'Font2';
+.Font2 {
+  font-family: "Font2";
 }
-.Font3{
-  font-family: 'Font3';
-  font-size: max(4vw,40px);
+.Font3 {
+  font-family: "Font3";
+  font-size: max(4vw, 40px);
 }
 :root {
   --color-primary: #d7ff00;
 }
 .headtext {
-
   width: fit-content;
   height: fit-content;
   overflow: hidden;
@@ -58,64 +57,50 @@ body {
   }
 }
 
-#page_1 {
-  height: 100vh;
+#page1 {
   width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+
+  > div {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: max(80px, 9vw);
+    > div {
+      width: 120px;
+      height: 100px;
+
+      display: inline-block;
+      > img {
+        position: absolute;
+        transform: skewX(-10deg) translateX(-50%);
+        width: 120px;
+        height:100px;
+        object-fit: cover;
+        z-index: -1;
+      }
+    }
+  }
 }
-#page3{
+#page3 {
   display: flex;
   position: relative;
   flex-wrap: wrap;
 
   width: 100vw;
-  
-  >div{
 
+  > div {
     width: 50vw;
   }
- 
-  >div img{
+
+  > div img {
     width: 100%;
-   
+
     max-height: 100vh;
   }
 }
-.I_div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  z-index: 1;
-  position: relative;
-}
-.line_1 {
-  font-size: 12px;
-}
-.line_2,
-.line_3,
-.line_4 {
-  font-size: 150px;
-  font-weight: 950;
-  letter-spacing: 2px;
-  font-family: "font3";
-}
-.I_div img {
-  height: 100px;
-  width: 70px;
-  object-fit: cover;
-  transform: skewX(-7deg);
-  z-index: -1;
-  position: relative;
-}
-.I_img_div {
-  display: flex;
-  gap: 40px;
-  width: 100%;
-}
+
 #page4 {
   width: 100vw;
   text-align: center;
@@ -175,23 +160,23 @@ body {
   .help-detail {
     grid-column: 4/6;
   }
-  #page3{
-     gap: 20px;
+  #page3 {
+    gap: 20px;
 
-    >div{
+    > div {
       width: 100vw;
-      
     }
-    &:first-child{
+    &:first-child {
       height: 50vh;
     }
   }
+
 }
 
 #page5 {
   width: 100vw;
   height: 100vh;
-  background: center url(./public/page4_bg.webp) ;
+  background: center url(./public/page4_bg.webp);
   background-attachment: fixed;
   position: relative;
   display: grid;
