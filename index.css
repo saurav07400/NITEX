@@ -59,7 +59,7 @@ body {
 
 #page1 {
   width: 100vw;
-  min-height: 100vh;
+  min-height: 110vh;
   display: grid;
   place-items: center;
 
@@ -153,25 +153,7 @@ body {
   top: 0px;
   background-color: #7f7f7f;
 }
-@media (max-width: 700px) {
-  .help-card {
-    grid-template-columns: repeat(6, 1fr);
-  }
-  .help-detail {
-    grid-column: 4/6;
-  }
-  #page3 {
-    gap: 20px;
 
-    > div {
-      width: 100vw;
-    }
-    &:first-child {
-      height: 50vh;
-    }
-  }
-
-}
 
 #page5 {
   width: 100vw;
@@ -196,6 +178,7 @@ body {
   > p {
     font-size: 1.1rem;
     font-family: "Font1";
+    text-align: left;
   }
   > a {
     text-decoration: none;
@@ -204,11 +187,13 @@ body {
     text-transform: uppercase;
     display: flex;
     gap: 4px;
+    font-size: 14px;
     align-items: center;
     outline-style: none;
   }
   > a :nth-child(1) {
     display: inline-block;
+    
     width: 16px;
     transform: skew(-10deg);
     height: 16px;
@@ -218,4 +203,32 @@ body {
   &:hover > a div {
     width: 40px;
   }
+}
+
+
+@media (max-width: 700px) {
+  .help-card {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .help-detail {
+    grid-column: 4/6;
+  }
+  #page3 {
+    gap: 20px;
+
+    > div {
+      width: 100vw;
+    }
+    &:first-child {
+      height: 50vh;
+    }
+  }
+
+}
+
+@media (max-width:490px) {
+  .stickybar{
+ max-width: 220px;
+
+  }  
 }

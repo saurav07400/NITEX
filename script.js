@@ -40,10 +40,11 @@ const setSmoothscroll = () => {
 const setHelpSectionAnim = () => {
   const helptimeline = gsap.timeline({
     scrollTrigger: {
-      trigger: ".help-instance",
+      trigger: "#page5",
       scroller: "main",
-      start: "top 240px",
+      start: "top 10%",
       toggleActions: "play none none reverse",
+      markers:true
     },
   });
   helptimeline.to(
@@ -51,7 +52,7 @@ const setHelpSectionAnim = () => {
     {
       transform: "scaleY(1)",
       stagger: 0.2,
-      duration: 0.2,
+      duration: 0.9,
     },
     0
   );
@@ -72,7 +73,7 @@ const setStorySectionAnim = () => {
       start: "top top",
       end: "bottom top",
       pin: true,
-      scrub: 1,
+      scrub: 1.4,
     },
   });
 
